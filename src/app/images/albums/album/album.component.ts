@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ImagesService } from '../../images.service';
 
 @Component({
   selector: 'app-album',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlbumComponent implements OnInit {
 
-  constructor() { }
+  @Input() album: any;
 
-  ngOnInit() {
+  photoCount: number = 0;
+  private _imageService: ImagesService;
+  constructor(imageServie: ImagesService) { 
+    this._imageService = imageServie;
+  }
+
+  async ngOnInit() {
+    this.photoCount = await this._imageService.getPhotosForAlbum(this.album.id).then(data => {return data.length});
+
   }
 
 }

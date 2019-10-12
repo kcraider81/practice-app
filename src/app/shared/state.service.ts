@@ -4,13 +4,20 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class StateService {
-  data : any;
+  data: any;
   constructor() { }
 
-  setPostData(post){
+  setPostData(post) {
     this.data = post;
-    
+
+  }
+  setAlbumData(album) {
+    this.data = album;
+
   }
 
- 
+  setPhotoData(photo: any) {
+    this.data = photo;
+  }
+
 }

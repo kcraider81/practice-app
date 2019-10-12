@@ -1,2 +1,6 @@
-<button routerLink='albums'>Albums</button>
-<h1>Images</h1>
+<h1>Album: {{album.title}}</h1>
+<div *ngFor="let photo of photos" (click)="onPhotoSelected(photo)">{{photo.title}}<br/>
+<img src="{{photo.thumbnailUrl}}">
+<br/>
+
+</div>
